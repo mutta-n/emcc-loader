@@ -12,11 +12,6 @@ export type LoaderOption = {
 	buildDir : string;
 	
 	/**
-	 * Runtime environment.
-	 */
-	environment : string;
-	
-	/**
 	 * Option for --pre-js
 	 */
 	preJs? : string;
@@ -76,7 +71,6 @@ export function parseOption(context : loader.LoaderContext) : LoaderOption {
 	
 	return {
 		buildDir: options.buildDir,
-		environment: options.environment || 'WEB',
 		cc: options.cc || 'emcc',
 		cxx: options.cxx || 'em++',
 		ld: options.ld || 'emcc',

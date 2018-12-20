@@ -154,13 +154,8 @@ export class Compiler {
 	 * Builds a loader script.
 	 */
 	async buildLoaderScript(baseScriptContent : string, options : LoaderOption) {
-		const config = {
-			ENVIRONMENT: options.environment,
-		};
-		
 		return `
-			module.exports = (function(config) {
-				return {
+			module.exports = {
 					initialize: function (userModule) {
 						userModule = userModule || {};
 						return new Promise((resolve, reject) => {
@@ -171,7 +166,6 @@ ${baseScriptContent}
 
 						});
 					}
-				};
-			})(${JSON.stringify(config)});`;
+			};`;
 	}
 }
